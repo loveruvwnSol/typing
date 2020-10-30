@@ -1,0 +1,107 @@
+/*title*/
+.title{
+    text-align: center;
+    margin-top: 10%;
+    font-size: 5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.goBackTitle{
+    font-size: 1.375rem;
+    background:#6699ff;
+    color: white;
+    border-radius: 5px;
+    padding: 18px 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+.oneMorePlay{
+    font-size: 1.375rem;
+    background:#6699ff;
+    color: white;
+    border-radius: 5px;
+    padding: 18px 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+.button:hover{
+    background: #336699;
+}
+
+.title-button{
+    font-size: 1.375rem;
+    background:#6699ff;
+    color: white;
+    border-radius: 5px;
+    padding: 18px 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+/*modal*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    margin: 0 auto;
+    padding: 40px;
+}
+.modal{
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.modal__bg{
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+.modal__content{
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+}
+.modal__content p{
+    text-align: center;
+}
+.modal__content table{
+    text-align: center;
+}
+table{
+    margin: 3px auto; 
+}
+
+/*border*/
+.head-border {
+    display: flex;
+    align-items: center;
+}
+
+.head-border:before,
+.head-border:after {
+    content: "";
+    height: 1px;
+    flex-grow: 1;
+    background-color: #666;
+}
+
+.head-border:before {
+    margin-right: 1rem;
+}
+
+.head-border:after {
+    margin-left: 1rem;
+}
