@@ -1,44 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>タイピングアプリ</title>
+    <title>タイピングアプリ タイトル</title>
     <script src="jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="style.css">
     <script src="typing.js"></script>
-    <link href="titile.html">
+    <link href="typing.html">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <input type="text" value="" id="textbox" onchange="textboxView(this.value)"></input>
-    <span id="disp-word"></span>
-    <div class="content">
-        <a class="js-modal-open"></a>
-    </div>
-    <div class="modal js-modal">
-        <div class="modal__bg js-modal-close"></div>
-        <div class="modal__content">
-            <p>タイピング結果</p>
-            <table border="1" id="resultTable">
-                <tr>
-                  <th>スコア</th>
-                  <th>0</th>
-                </tr>
-                <tr>
-                  <td>ミス数</td>
-                  <td>?</td>
-                </tr>
-                <tr>
-                  <td>WPM</td>
-                  <td>?</td>
-                </tr>
-              </table>
-            <a class="button goBackTitle" href="titile.html">タイトルに戻る</a>
-            <h2 class="head-border"></h2>
-            <a class="button oneMorePlay" href="index.html">もう一回プレイする</a>
-        </div>
+    <div class="title">
+        <h2> ー タイピングアプリ ー </h2>
+        <a class="button title-button" href="typing.html">タイピングを始める</a>
     </div>
 </body>
 </html>

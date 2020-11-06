@@ -1,4 +1,7 @@
 var counts = 0;
+
+
+var inputKey = "";
 const textList = [
     { name: "こんにちは", romaji: ["konnnitiha"], count: 0 },
     { name: "カレーライス", romaji: ["kare-raisu"], count: 0 },
@@ -19,37 +22,60 @@ const textList = [
     { name: "グーグルクローム", romaji: ["gu-gurukuro-mu"], count: 0 },
     { name: "エヌ高等学校", romaji: ["enukoutougakkou"], count: 0 },
     { name: "ハラハラドキドキ", romaji: ["haraharadokidoki"], count: 0 },
-    { name: "田奈高校", romaji: ["tanakoukou"], count: 0 },
 ]
 
-const tar = document.getElementById("disp-word");
-var index = Math.floor(Math.random() * textList.length);
-
-window.onload = function(){
-    document.getElementById("disp-word").innerHTML = textList[index]["name"];
+function isKeyCorrect(key1, key2) {
+    return key1 === key2;
 }
 
-function textboxView(e) {
-    if (e == textList[index]["name"]) {
-        textbox.value = "";
-        textList.splice(index,1);
-        index = Math.floor( Math.random() * textList.length);
-        document.getElementById("disp-word").innerHTML=textList[index]["name"];
-        console.log("成功");
-        counts = counts + 1;
-        console.log(counts);
-    }
-    else {
-        console.log("失敗");
-    }
-    if(counts == 1){
-      console.log("FINISH");
-      $('.js-modal').fadeIn();
+function keyevent(index) {
+    console.log(index, this)
+    counts++
+    // const keyName = event.key;
+    // console.log(`${keyName}が押されました`);
+
+    // while (true) {
+    // let s = textList[index].romaji[0]
+    // if (keyName === s) {
+    //     console.log("true");
+    // }
+    // else {
+    //     console.log("miss!");
+    // }
+    // }
+}
+
+
+window.onload = function () {
+    const tar = document.getElementById("disp-word");
+
+    while (counts !== 12) {
+        var index = Math.floor(Math.random() * textList.length);
+        tar.innerHTML = textList[index]["name"];
+
+        document.addEventListener('keypress', keyevent(index));
     }
 }
 
-document.addEventListener('keypress', keyevent);
-function keyevent(){
-const keyName = event.key;
-console.log(`${keyName}が押されました`);
-}
+// function textboxView(e) {
+//     if (e == textList[index]["name"]) {
+//         textbox.value = "";
+//         textList.splice(index, 1);
+//         index = Math.floor(Math.random() * textList.length);
+//         document.getElementById("disp-word").innerHTML = textList[index]["name"];
+//         console.log("成功");
+//         counts = counts + 1;
+//         console.log(counts);
+//     }
+//     else {
+//         console.log("失敗");
+//     }
+//     if (counts == 1) {
+//         console.log("FINISH");
+//         $('.js-modal').fadeIn();
+//     }
+// }
+
+
+
+
