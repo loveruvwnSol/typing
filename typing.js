@@ -1,6 +1,5 @@
 var counts = 0;
 
-
 var inputKey = "";
 const textList = [
     { name: "こんにちは", romaji: ["konnnitiha"], count: 0 },
@@ -22,15 +21,16 @@ const textList = [
     { name: "グーグルクローム", romaji: ["gu-gurukuro-mu"], count: 0 },
     { name: "エヌ高等学校", romaji: ["enukoutougakkou"], count: 0 },
     { name: "ハラハラドキドキ", romaji: ["haraharadokidoki"], count: 0 },
-]
+];
 
 function isKeyCorrect(key1, key2) {
     return key1 === key2;
 }
 
-function keyevent(index) {
-    console.log(index, this)
-    counts++
+function keyevent(event) {
+    console.log(event.key);
+    // console.log(index, this);
+    // counts++;
     // const keyName = event.key;
     // console.log(`${keyName}が押されました`);
 
@@ -45,17 +45,34 @@ function keyevent(index) {
     // }
 }
 
+// window.onload = function () {
+//     const tar = document.getElementById("disp-word");
 
-window.onload = function () {
+//     var index = Math.floor(Math.random() * textList.length);
+//     tar.innerHTML = textList[index]["name"];
+
+//     document.addEventListener("keyup", (event) => {
+//         if (event.key == 2) {
+//             console.log(event.key);
+//         }
+//     });
+// };
+
+document.addEventListener("keyup", (event) => {
+    const con = document.getElementById("content");
     const tar = document.getElementById("disp-word");
 
-    while (counts !== 12) {
-        var index = Math.floor(Math.random() * textList.length);
-        tar.innerHTML = textList[index]["name"];
+    var index = Math.floor(Math.random() * textList.length);
+    tar.innerHTML = textList[index]["name"];
 
-        document.addEventListener('keypress', keyevent(index));
+    let count_key = 0;
+    let word = textList[index]["romaji"][0];
+    while (count_key !== word.length) {
+        if (word[count_key] === con.key) {
+            count_key++;
+        }
     }
-}
+});
 
 // function textboxView(e) {
 //     if (e == textList[index]["name"]) {
@@ -75,7 +92,3 @@ window.onload = function () {
 //         $('.js-modal').fadeIn();
 //     }
 // }
-
-
-
-
