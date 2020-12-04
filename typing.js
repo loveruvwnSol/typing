@@ -101,6 +101,30 @@
 // });
 
 
+ // カウントダウンする秒数
+ var sec = 180;
+ 
+ // 開始日時を設定
+ var dt = new Date();
+ console.log("Start: ", dt);
+ // 終了時刻を開始日時+カウントダウンする秒数に設定
+ var endDt = new Date(dt.getTime() + sec * 1000);
+ console.log("End : ", endDt);
+
+ // 1秒おきにカウントダウン
+ var cnt = sec;
+ var id = setInterval(function(){
+   cnt--;
+   console.log(cnt);
+   // 現在日時と終了日時を比較
+   dt = new Date();
+   if(dt.getTime() >= endDt.getTime()){
+     clearInterval(id);
+    //  console.log("Finish!");
+   }
+ }, 1000);
+
+
 // グローバルに変数を色々定義する
 var counts = 0;
 var miss = -1;
@@ -133,12 +157,14 @@ const textList = [
   var index = Math.floor(Math.random() * textList.length);
   const tar = document.getElementById("disp-word");
   const nar = document.getElementById("disp-word romaji");
+  const player_typing = document.getElementById("disp-word player")
   
   // ページが読み込まれたら実行する;
   window.onload = function () {
     tar.innerHTML = textList[index]["name"];
     nar.innerHTML = textList[index]["romaji"];
-    console.log(miss);
+    // console.log(miss);
+    console.log(textList[index]["romaji"].length);
   };
   
   // キーボードが押されたら実行する
@@ -151,6 +177,8 @@ const textList = [
       index = Math.floor(Math.random() * textList.length);
       tar.innerHTML = textList[index]["name"];
       nar.innerHTML = textList[index]["romaji"];
+      nar.style.color = "#daf6ff";
+      player_typing.innerHTML = "";
       counts++;
       console.log("カウント" + counts);
       if (counts == 15){
@@ -174,18 +202,35 @@ const textList = [
     // 入力された文字が打つべき文字と正しかったら
     if (romaji_word[romaji_count] === event.key) {
       // textList[index]["count"]に1足して、次の文字にポインタを移す
-      nar.style.color = "red";
+      player_typing.insertAdjacentHTML('beforeend',romaji_word[romaji_count]); 
+      // 打たれたアルファベットを表示する
       textList[index]["count"]++;
+      // カウントを追加していく
     }
     else{
         miss++;
+        // ミス数を追加していく
         document.getElementById("missCount").innerHTML = miss;
+        // ミス数表示の更新
     }
     // consoleに色々表示する
     console.log(textList[index]["count"], textList[index]["romaji"][0].length);
     console.log(textList[index]["romaji"]);
   };
 
+
+  // 途中で辞めたいとき
+  $(document).keyup(function(e) {
+    // もし27(Escキー)が押されたら
+    if (e.keyCode == 27) {
+      tar.innerHTML = "";
+      nar.innerHTML = "";
+      // お題とそのローマ字文を消す
+      window.onkeydown = "";
+      console.log("FINISH");
+      $('.js-modal').fadeIn();
+    }
+});
   
   // function textboxView(e) {
   //     if (e == textList[index]["name"]) {
